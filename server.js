@@ -10,8 +10,17 @@ connectDB();
 
 const app = express();
 
+// --- THE FIX IS HERE ---
+// We are now telling our backend to specifically trust your live frontend URL
+const corsOptions = {
+  origin: 'https://ai-study-buddy-frontend.vercel.app',
+  optionsSuccessStatus: 200 // For some legacy browsers
+};
+app.use(cors(corsOptions));
+// --- END OF FIX ---
+
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
