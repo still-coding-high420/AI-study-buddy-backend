@@ -11,13 +11,9 @@ connectDB();
 const app = express();
 
 // --- THE FINAL FIX IS HERE ---
-// We are now telling our backend to specifically trust your live frontend URL.
-// IMPORTANT: Make sure this URL exactly matches your Vercel deployment URL.
-const corsOptions = {
-  origin: 'https://ai-study-buddy-frontend.vercel.app',
-  optionsSuccessStatus: 200 // For some legacy browsers
-};
-app.use(cors(corsOptions));
+// We are now telling our backend to trust ALL origins.
+// This is a debugging step to confirm the issue is CORS.
+app.use(cors());
 // --- END OF FIX ---
 
 
